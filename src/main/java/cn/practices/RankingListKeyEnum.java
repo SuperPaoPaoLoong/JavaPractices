@@ -1,4 +1,4 @@
-package cn.gglol.java.bestpractices;
+package cn.practices;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @Author: jingwentao
  * @Date: 2020/6/15
  */
-public enum RankingListKey {
+public enum RankingListKeyEnum {
 
     GRADE_1(1L, "primary_school_low", "小学低段"),
     GRADE_2(2L, "primary_school_low", "小学低段"),
@@ -25,7 +25,7 @@ public enum RankingListKey {
     String key;
     String name;
 
-    RankingListKey(Long gradeId, String key, String name) {
+    RankingListKeyEnum(Long gradeId, String key, String name) {
         this.gradeId = gradeId;
         this.key = key;
         this.name = name;
@@ -43,17 +43,17 @@ public enum RankingListKey {
         return name;
     }
 
-    static final Map<Long, RankingListKey> mappings;
+    static final Map<Long, RankingListKeyEnum> mappings;
 
     static {
-        Map<Long, RankingListKey> temp = new HashMap<>();
-        for (RankingListKey item : values()) {
+        Map<Long, RankingListKeyEnum> temp = new HashMap<>();
+        for (RankingListKeyEnum item : values()) {
             temp.put(item.gradeId, item);
         }
         mappings = Collections.unmodifiableMap(temp);
     }
 
-    public static RankingListKey get(Long gradeId) {
+    public static RankingListKeyEnum get(Long gradeId) {
         return mappings.get(gradeId);
     }
 }

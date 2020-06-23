@@ -1,4 +1,4 @@
-package cn.gglol.java.bestpractices;
+package cn.practices;
 
 import org.springframework.cglib.beans.BeanCopier;
 
