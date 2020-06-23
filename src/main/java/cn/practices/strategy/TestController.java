@@ -37,11 +37,13 @@ public class TestController {
      */
     @RequestMapping("/strategy/{option}/{a}/{b}")
     public String option(@PathVariable String option, @PathVariable int a, @PathVariable int b) {
+        // 通过 bean 名称依赖查找
         BaseStrategy strategy = strategyMap.get(option);
         if (strategy != null) {
             return strategy.toString() + " 1: " + a + "+" + b + "=" + strategy.option(a, b);
         }
 
+        // 通过自定义参数筛选
         try{
             for (BaseStrategy st : strategyList) {
                 if (ObjectUtils.nullSafeEquals(st.getClass().getAnnotation(Strategy.class).key(),
